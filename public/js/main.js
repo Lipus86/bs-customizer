@@ -10,7 +10,7 @@ $(function() {
 
     $('.submitForm').on('click', function(e){
         sendForm(e, $(this).parents('form').serialize());
-        //console.log($(this).parents('form').serializeObject());
+        console.log($(this).parents('form').serialize());
     });
     for (elem in elementsProp) {
         $(elem).data('properties', elementsProp[elem]);

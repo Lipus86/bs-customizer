@@ -14,30 +14,18 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 app.post('/', function(req, res) {
-    var 
-        grayLase = req.body.grayLase,
-        grayDarker = req.body.grayDarker,
-        grayDark = req.body.grayDark,
-        gray = req.body.gray,
-        grayLight = req.body.grayLight,
-        grayLighter = req.body.grayLighter,
-        brandPrimary = req.body.brandPrimary,
-        brandSuccess = req.body.brandSuccess,
-        brandInfo = req.body.brandInfo,
-        brandWarning = req.body.brandWarning,
-        brandDanger = req.body.brandDanger;
     var sassConf = 
-                    '$gray-base:' + grayLase +
-                    ';\n$gray-darker:' + grayDarker +
-                    ';\n$gray-dark:' + grayDark +
-                    ';\n$gray:' + gray +
-                    ';\n$gray-light:' + grayLight +
-                    ';\n$gray-lighter:' + grayLighter +
-                    ';\n$brand-primary:' + brandPrimary +
-                    ';\n$brand-success:' + brandSuccess +
-                    ';\n$brand-info:' + brandInfo +
-                    ';\n$brand-warning:' + brandWarning +
-                    ';\n$brand-danger:' + brandDanger + ';';
+                    '$gray-base:' + req.body.grayLase +
+                    ';\n$gray-darker:' + req.body.grayDarker +
+                    ';\n$gray-dark:' + req.body.grayDark +
+                    ';\n$gray:' + req.body.gray +/*
+                    ';\n$gray-light:' + req.body.grayLight +
+                    ';\n$gray-lighter:' + req.body.grayLighter +
+                    ';\n$brand-primary:' + req.body.brandPrimary +
+                    ';\n$brand-success:' + req.body.brandSuccess +
+                    ';\n$brand-info:' + req.body.brandInfo +
+                    ';\n$brand-warning:' + req.body.brandWarning +
+                    ';\n$brand-danger:' + req.body.brandDanger +*/ ';';
     fs.writeFile('styles/_bootstrap-variables.sass', sassConf, function (err) {
       if (err) throw err;
       console.log('It\'s saved!');

@@ -6,64 +6,22 @@
     <link id="style" rel="stylesheet" type="text/css" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="/node_modules/angular/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
 </head>
 
 
-<body>
+<body ng-app="bsCustomizer">
     <button class="btn btn-primary btn-lg allSettings" type="button" data-toggle="collapse" data-target="#allSettings" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-cog"></span></button>
     <div id="main" class="container">
         <form method="POST" id="generalForm">
             <div class="row">
-                    <div class="collapse" id="allSettings">
-                        <div class="well">
-                            <div class="col-xs-4">
-                                <label for="grayLase">$gray-base</label>
-                                <input name="grayLase" id="grayLase" type="text" value="#000" class="form-control">
-                            </div>
-                            <div class="col-xs-4">
-                                <label for="grayDarker">$gray-darker</label>
-                                <input name="grayDarker" id="grayDarker" type="text" value="lighten($gray-base, 13.5%)" class="form-control">
-                            </div>
-                            <div class="col-xs-4">
-                                <label for="grayDark">$gray-dark</label>
-                                <input name="grayDark" id="grayDark" type="text" value="lighten($gray-base, 20%)" class="form-control">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-4">
-                                <label for="gray">$gray</label>
-                                <input name="gray" id="gray" type="text" value="lighten($gray-base, 33.5%)" class="form-control">
-                            </div>
-                            <div class="col-xs-4">
-                                <label for="grayLight">$gray-light</label>
-                                <input name="grayLight" id="grayLight" type="text" value="lighten($gray-base, 46.7%)" class="form-control">
-                            </div>
-                            <div class="col-xs-4">
-                                <label for="grayLighter">$gray-lighter</label>
-                                <input name="grayLighter" id="grayLighter" type="text" value="lighten($gray-base, 93.5%)" class="form-control">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-4">
-                                <label for="brandPrimary">$brand-primary</label>
-                                <input name="brandPrimary" id="brandPrimary" type="text" value="darken(#428bca, 6.5%)" class="form-control">
-                            </div>
-                            <div class="col-xs-4">
-                                <label for="brandSuccess">$brand-success</label>
-                                <input name="brandSuccess" id="brandSuccess" type="text" value="#5cb85c" class="form-control">
-                            </div>
-                            <div class="col-xs-4">
-                                <label for="brandInfo">$brand-info</label>
-                                <input name="brandInfo" id="brandInfo" type="text" value="#5bc0de" class="form-control">
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-xs-4">
-                                <label for="brandWarning">$brand-warning</label>
-                                <input name="brandWarning" id="brandWarning" type="text" value="#f0ad4e" class="form-control">
-                            </div>
-                            <div class="col-xs-4">
-                                <label for="brandDanger">$brand-danger</label>
-                                <input name="brandDanger" id="brandDanger" type="text" value="#d9534f" class="form-control">
+                    <div class="A-collapse" id="A-allSettings">
+                        <div class="well" ng-controller="customizerCtrl as customizer">
+                            <div class="col-xs-4" ng-repeat="variable in customizer.variables">
+                                <label for="{{variable.alias}}">${{variable.name}}</label>
+                                <input name="{{variable.alias}}" id="{{variable.alias}}" type="text" value="{{variable.value}}" class="form-control">
                             </div>
                             <div class="col-xs-12">
                                 <input class="submitForm btn btn-success pull-right" type="submit" value="Update">
