@@ -10,7 +10,6 @@ $(function() {
 
     $('.submitForm').on('click', function(e){
         sendForm(e, $(this).parents('form').serialize());
-        console.log($(this).parents('form').serialize());
     });
     for (elem in elementsProp) {
         $(elem).data('properties', elementsProp[elem]);
@@ -46,7 +45,7 @@ $(function() {
           url: '/',
           data: formData,
           success: function(data) {
-            $('#style').attr('href', 'bootstrap.css');
+            $('#style').replaceWith('<link id="style" rel="stylesheet" type="text/css" href="bootstrap.css" />');
             (data == 'OK') ? hideError() : showError('Check values');
           },
           error:  function(){
@@ -82,7 +81,7 @@ $(function() {
             hidePopup();
         });
     };
-    $.fn.serializeObject = function(){
+    /*$.fn.serializeObject = function(){
         var o = {};
         var a = this.serializeArray();
         $.each(a, function() {
@@ -96,5 +95,5 @@ $(function() {
             }
         });
         return o;
-    };
+    };*/
 });

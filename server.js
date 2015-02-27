@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
-    fs = require('fs');
+    fs = require('fs'),
+    variables = require('./public/data/variables');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -14,18 +15,12 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 app.post('/', function(req, res) {
-    var sassConf = 
-                    '$gray-base:' + req.body.grayLase +
-                    ';\n$gray-darker:' + req.body.grayDarker +
-                    ';\n$gray-dark:' + req.body.grayDark +
-                    ';\n$gray:' + req.body.gray +/*
-                    ';\n$gray-light:' + req.body.grayLight +
-                    ';\n$gray-lighter:' + req.body.grayLighter +
-                    ';\n$brand-primary:' + req.body.brandPrimary +
-                    ';\n$brand-success:' + req.body.brandSuccess +
-                    ';\n$brand-info:' + req.body.brandInfo +
-                    ';\n$brand-warning:' + req.body.brandWarning +
-                    ';\n$brand-danger:' + req.body.brandDanger +*/ ';';
+    var sassConf = '';
+    for (var i = 0, property, alias; i < variables.length; i++) {
+        alias = variables[i].alias;
+        property = '$' + variables[i].name + ':' + req.body[alias] + ';\n';
+        sassConf = sassConf + property;
+    }
     fs.writeFile('styles/_bootstrap-variables.sass', sassConf, function (err) {
       if (err) throw err;
       console.log('It\'s saved!');

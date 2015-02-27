@@ -3,7 +3,7 @@
 <head>
     <title>Test</title>
     <link id="style" rel="stylesheet" type="text/css" href="bootstrap.css">
-    <link id="style" rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
@@ -17,7 +17,7 @@
     <div id="main" class="container">
         <form method="POST" id="generalForm">
             <div class="row">
-                    <div class="A-collapse" id="A-allSettings">
+                    <div class="collapse" id="allSettings">
                         <div class="well" ng-controller="customizerCtrl as customizer">
                             <div class="col-xs-4" ng-repeat="variable in customizer.variables">
                                 <label for="{{variable.alias}}">${{variable.name}}</label>
