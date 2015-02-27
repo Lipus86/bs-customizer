@@ -43,11 +43,11 @@ app.post('/', function(req, res) {
       console.log('It\'s saved!');
         var sass = require('node-sass');
         sass.render({
-            file: 'styles/all.scss',
+            file: 'styles/bootstrap.scss',
             success: function(renderObject){
-                 fs.writeFile('public/all.css', renderObject.css, function (err) {
+                 fs.writeFile('public/bootstrap.css', renderObject.css, function (err) {
                       if (err) throw err;
-                     console.log('all.css is saved');
+                     console.log('bootstrap.css is saved');
                      res.send('OK');
                  });
             },

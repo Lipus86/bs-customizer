@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <title>Test</title>
-    <link id="style" rel="stylesheet" type="text/css" href="all.css">
+    <link id="style" rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link id="style" rel="stylesheet" type="text/css" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 </head>
 
 
@@ -151,150 +153,5 @@
             </div>
         </form>
     </div>
-   <script>
-        $(function() {
-            var prevElement,
-                activeElements,
-                elementsProp = {
-                   'h1': ['hcolor', 'fx', 'gh', 'lf'],
-                   'h2': ['gh', 'lf'],
-                   'h3': [ 'gh', 'lf']
-                };
-            
-            
-            $('.submitForm').on('click', function(e){
-                sendForm(e, $(this).parents('form').serialize());
-                //console.log($(this).parents('form').serializeObject());
-            });
-            for (elem in elementsProp) {
-                $(elem).data('properties', elementsProp[elem]);
-                activeElements = activeElements + ',' + elem;
-            };
-            $(activeElements).on('click', function(e){
-                var currentElement = $(this);
-                showPopup(currentElement);
-                e.stopPropagation();
-                e.preventDefault();
-            });
-            $('body').on('click', function(e){
-                hidePopup();
-            });
-            $(activeElements).on({
-                mouseover : function(e) {
-                    $(activeElements).removeClass('hover');
-                   $(this).addClass('hover');
-                    e.stopPropagation();
-                },
-                mouseleave: function(e) {
-                    $(this).removeClass('hover');
-                    e.stopPropagation();
-                }
-            });
-            $(document).on('keyup', function(e) {
-              if (e.keyCode == 27) hidePopup();
-            });
-            
-            function sendForm(e, formData){
-                $.ajax({
-                  type: 'POST',
-                  url: '/',
-                  data: formData,
-                  success: function(data) {
-                    $('#style').attr('href', 'all.css');
-                    (data == 'OK') ? hideError() : showError('Check values');
-                  },
-                  error:  function(){
-                        showError('Problem with network');
-                    }
-                });
-                e.preventDefault();
-            };
-            function showError(text){
-                $('#info').html('<div class="alert alert-danger" role="alert">' + text + '</div>');
-            };
-            function hideError(){
-                $('#info').html('&nbsp;');
-            };
-            function showPopup(currentElement){
-                if (prevElement)  hidePopup(prevElement);
-                generatePopup(currentElement);
-                currentElement.addClass('active-element');
-                prevElement = currentElement;
-            };
-            function hidePopup(){
-                $('#pop-up').remove();
-                prevElement.removeClass('active-element');
-            };
-            function generatePopup(currentElement){
-                var properties = currentElement.data('properties');
-                $('body').append('<div id="pop-up" class="well"></div>')
-                for (prop in properties) {
-                    $('#pop-up').append('<input type="text" name="' + properties[prop] + '"/>');
-                }
-                $('#pop-up').append('<input class="btn btn-info submitForm" type="submit" value="Update" /><a href="#" class="close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>');
-                $('.close, .allSettings').on('click', function(){
-                    hidePopup();
-                });
-            };
-            $.fn.serializeObject = function(){
-                var o = {};
-                var a = this.serializeArray();
-                $.each(a, function() {
-                    if (o[this.name] !== undefined) {
-                        if (!o[this.name].push) {
-                            o[this.name] = [o[this.name]];
-                        }
-                        o[this.name].push(this.value || '');
-                    } else {
-                        o[this.name] = this.value || '';
-                    }
-                });
-                return o;
-            };
-       });
-    </script>
-    <style>
-        body {
-            padding-bottom: 50px;
-        }
-        #main {
-            position: relative;
-        }
-        #pop-up {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #fff;
-            z-index: 100;
-            margin-bottom: 0;
-            border-radius: 4px 4px 0 0;
-            border-bottom: none;
-        }
-        .hover {
-            outline: 2px solid #66f !important;
-        }
-        .active-element, .active-element:focus {
-            outline: 9999px solid rgba(0,0,0,0.3) !important;
-            position: relative;
-            z-index: 10;
-        }
-        .allSettings {
-            position: absolute;
-            z-index: 100;
-            right: 0;
-            outline: none !important;
-            border-color: #fff;
-            border-radius: 0 0 0 4px;
-            border-top: none;
-        }
-        #allSettings .well {
-            border-radius: 0 0 5px 5px;
-            border-top: none;
-        }
-        #allSettings input {
-            margin-bottom: 10px;
-        }
-    </style>
 </body>
 </html>
