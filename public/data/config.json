@@ -1,5 +1,7 @@
 {
    "h1": ["bodyBg", "fx", "gh", "lf"],
    "h2": ["gh", "lf"],
-   "h3": [ "gh", "lf"]
+   "h3": [ "gh", "lf"],
+   "a": [ "gh", "lf"],
+   "button": [ "gh", "lf"]
 }

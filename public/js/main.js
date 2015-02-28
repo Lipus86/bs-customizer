@@ -24,19 +24,16 @@ $(function() {
         $(elem).data('properties', elementsProp[elem]);
         activeElements = activeElements + ',' + elem;
     };
-    $(activeElements).on('click', function(e){
-        var currentElement = $(this);
-        showInputs(currentElement);
-        e.stopPropagation();
-        e.preventDefault();
-    });
-    $('#main').on('click', function(e){
-        showInputs('all');
-    });
-    $(activeElements).on({
+    $('#main').find(activeElements).on({
+        click: function(e){
+            var currentElement = $(this);
+            showInputs(currentElement);
+            e.stopPropagation();
+            e.preventDefault();
+        },
         mouseover : function(e) {
             $(activeElements).removeClass('hover');
-           $(this).addClass('hover');
+            $(this).addClass('hover');
             e.stopPropagation();
         },
         mouseleave: function(e) {
@@ -44,6 +41,10 @@ $(function() {
             e.stopPropagation();
         }
     });
+    $('#main').on('click', function(e){
+        showInputs('all');
+    });
+    $(activeElements)
     $(document).on('keyup', function(e) {
       if (e.keyCode == 27) hidePopup();
     });
