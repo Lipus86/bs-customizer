@@ -15,22 +15,22 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 
 app.post('/', function(req, res) {
-    var sassConf = '';
-    for (var i = 0, property, alias; i < variables.length; i++) {
-        alias = variables[i].alias;
-        property = '$' + variables[i].name + ':' + req.body[alias] + ';\n';
+    var property,
+        sassConf = '@import "bootstrap/variables";\n';
+    for (var key in req.body ) {
+        property = '$' + variables[key].name + ':' + req.body[key] + ';\n';
         sassConf = sassConf + property;
-    }
+    };
     fs.writeFile('styles/_bootstrap-variables.sass', sassConf, function (err) {
       if (err) throw err;
-      console.log('It\'s saved!');
+      console.log('_bootstrap-variables.sass is saved!');
         var sass = require('node-sass');
         sass.render({
             file: 'styles/bootstrap.scss',
             success: function(renderObject){
                  fs.writeFile('public/bootstrap.css', renderObject.css, function (err) {
                       if (err) throw err;
-                     console.log('bootstrap.css is saved');
+                     console.log('bootstrap.css is generated');
                      res.send('OK');
                  });
             },

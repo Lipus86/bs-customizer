@@ -1,15 +1,24 @@
 $(function() {
-    var prevElement,
-        activeElements,
-        elementsProp = {
-           'h1': ['hcolor', 'fx', 'gh', 'lf'],
-           'h2': ['gh', 'lf'],
-           'h3': [ 'gh', 'lf']
-        };
-
+    var prevElement, activeElements, elementsProp, variables;
+    $.ajax({
+        url: '../data/config.json',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            elementsProp = data;
+        }
+    });
+    $.ajax({
+        url: '../data/variables.json',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            variables = data;
+        }
+    });
 
     $('.submitForm').on('click', function(e){
-        sendForm(e, $(this).parents('form').serialize());
+        sendForm(e);
     });
     for (elem in elementsProp) {
         $(elem).data('properties', elementsProp[elem]);
@@ -17,12 +26,12 @@ $(function() {
     };
     $(activeElements).on('click', function(e){
         var currentElement = $(this);
-        showPopup(currentElement);
+        showInputs(currentElement);
         e.stopPropagation();
         e.preventDefault();
     });
-    $('body').on('click', function(e){
-        hidePopup();
+    $('#main').on('click', function(e){
+        showInputs('all');
     });
     $(activeElements).on({
         mouseover : function(e) {
@@ -39,11 +48,18 @@ $(function() {
       if (e.keyCode == 27) hidePopup();
     });
 
-    function sendForm(e, formData){
+    function sendForm(e){
+        var sendData = {};
+        var formData = $('#generalForm').serializeObject();
+        for (var key in formData ) {
+            if(!(formData[key] == variables[key].value)) {
+                sendData[key] = formData[key];
+            }
+        };
         $.ajax({
           type: 'POST',
           url: '/',
-          data: formData,
+          data: sendData,
           success: function(data) {
             $('#style').replaceWith('<link id="style" rel="stylesheet" type="text/css" href="bootstrap.css" />');
             (data == 'OK') ? hideError() : showError('Check values');
@@ -55,33 +71,35 @@ $(function() {
         e.preventDefault();
     };
     function showError(text){
+        $('body').append('<div id="info"></div>');
         $('#info').html('<div class="alert alert-danger" role="alert">' + text + '</div>');
     };
     function hideError(){
-        $('#info').html('&nbsp;');
+        if ($('#info')) $('#info').remove();
     };
-    function showPopup(currentElement){
-        if (prevElement)  hidePopup(prevElement);
-        generatePopup(currentElement);
-        currentElement.addClass('active-element');
-        prevElement = currentElement;
+    function showInputs(currentElement){
+        if (currentElement === 'all') {
+            $('.input-holder').show();
+            if (prevElement) prevElement.removeClass('active-element');
+        } else {
+            hideInputs();
+            var properties = currentElement.data('properties');
+            for (prop in properties) {
+                $('.input-holder').each(function(){
+                    if ($(this).attr('id') == properties[prop]) {
+                        $(this).show();
+                    }
+                });
+            }
+            currentElement.addClass('active-element');
+            prevElement = currentElement;
+        }
     };
-    function hidePopup(){
-        $('#pop-up').remove();
+    function hideInputs(){
+        $('.input-holder').hide();
         if (prevElement) prevElement.removeClass('active-element');
     };
-    function generatePopup(currentElement){
-        var properties = currentElement.data('properties');
-        $('body').append('<div id="pop-up" class="well"></div>')
-        for (prop in properties) {
-            $('#pop-up').append('<input type="text" name="' + properties[prop] + '"/>');
-        }
-        $('#pop-up').append('<input class="btn btn-info submitForm" type="submit" value="Update" /><a href="#" class="close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>');
-        $('.close, .allSettings').on('click', function(){
-            hidePopup();
-        });
-    };
-    /*$.fn.serializeObject = function(){
+    $.fn.serializeObject = function(){
         var o = {};
         var a = this.serializeArray();
         $.each(a, function() {
@@ -95,5 +113,5 @@ $(function() {
             }
         });
         return o;
-    };*/
+    };
 });

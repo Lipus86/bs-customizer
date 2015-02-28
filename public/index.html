@@ -14,32 +14,31 @@
 
 <body ng-app="bsCustomizer">
     <button class="btn btn-primary btn-lg allSettings" type="button" data-toggle="collapse" data-target="#allSettings" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-cog"></span></button>
-    <div id="main" class="container">
-        <form method="POST" id="generalForm">
-            <div class="row">
-                    <div class="collapse" id="allSettings">
-                        <div class="well" ng-controller="customizerCtrl as customizer">
-                            <div class="col-xs-4" ng-repeat="variable in customizer.variables">
-                                <label for="{{variable.alias}}">${{variable.name}}</label>
-                                <input name="{{variable.alias}}" id="{{variable.alias}}" type="text" value="{{variable.value}}" class="form-control">
-                            </div>
-                            <div class="col-xs-12">
-                                <input class="submitForm btn btn-success pull-right" type="submit" value="Update">
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
+    <form method="POST" id="generalForm">
+        <div class="row">
+            <div class="collapse" id="allSettings">
+                <div class="well" ng-controller="customizerCtrl as customizer">
+                    <div class="col-xs-4 input-holder" ng-repeat="variable in variables" id="{{variable.alias}}">
+                        <label for="{{variable.alias}}">{{variable.description}}</label>
+                        <input name="{{variable.alias}}" id="{{variable.alias}}" type="text" value="{{variable.value}}" class="form-control">
                     </div>
+                    <div class="col-xs-12">
+                        <input class="submitForm btn btn-success pull-right" type="submit" value="Update">
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-            <div id="info"></div>
-            <div>
-               <h1>Heading</h1>
-               <h2>Subheading <a href="#">Subheading</a></h2>
-               <h3>Subheading</h3>
-               <h4>Subheading</h4>
-               <h5>Subheading</h5>
-               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis pharetra nunc molestie ullamcorper. Morbi porttitor velit at sapien fringilla, ut ultricies enim blandit. Aliquam a viverra nulla. Duis vitae nulla eleifend, hendrerit diam eget, <a href="#">sollicitudin ligula</a>. Donec a sapien a elit faucibus hendrerit. Aenean dapibus lobortis est, non convallis dui dictum eu. Aliquam sit amet aliquet purus, nec sollicitudin lacus. Mauris id scelerisque neque, iaculis tempor justo. Maecenas fringilla lorem at nisl venenatis, et rutrum tortor viverra.</p>
-               <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis pharetra nunc molestie ullamcorper. Morbi porttitor velit at sapien fringilla, ut ultricies enim blandit. Aliquam a viverra nulla. Duis vitae nulla eleifend, <a href="#">hendrerit diam eget, sollicitudin ligula</a>. Donec a sapien a elit faucibus hendrerit. Aenean dapibus lobortis est, non convallis dui dictum eu. Aliquam sit amet aliquet purus, nec sollicitudin lacus. Mauris id scelerisque neque, iaculis tempor justo. Maecenas fringilla lorem at nisl venenatis, et rutrum tortor viverra.</blockquote>
             </div>
+        </div>
+    </form>
+    <div id="main">
+        <div class="container">
+            <h1>H1 Heading</h1>
+            <h2>H2 Subheading <a href="#">Link</a></h2>
+            <h3>H3 Subheading</h3>
+            <h4>H4 Subheading</h4>
+            <h5>H5 Subheading</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis pharetra nunc molestie ullamcorper. Morbi porttitor velit at sapien fringilla, ut ultricies enim blandit. Aliquam a viverra nulla. Duis vitae nulla eleifend, hendrerit diam eget, <a href="#">sollicitudin ligula</a>. Donec a sapien a elit faucibus hendrerit. Aenean dapibus lobortis est, non convallis dui dictum eu. Aliquam sit amet aliquet purus, nec sollicitudin lacus. Mauris id scelerisque neque, iaculis tempor justo. Maecenas fringilla lorem at nisl venenatis, et rutrum tortor viverra.</p>
+            <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis pharetra nunc molestie ullamcorper. Morbi porttitor velit at sapien fringilla, ut ultricies enim blandit. Aliquam a viverra nulla. Duis vitae nulla eleifend, <a href="#">hendrerit diam eget, sollicitudin ligula</a>. Donec a sapien a elit faucibus hendrerit. Aenean dapibus lobortis est, non convallis dui dictum eu. Aliquam sit amet aliquet purus, nec sollicitudin lacus. Mauris id scelerisque neque, iaculis tempor justo. Maecenas fringilla lorem at nisl venenatis, et rutrum tortor viverra.</blockquote>
             <div class="well">
                 <div class="btn-toolbar" role="toolbar">
                     <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star</button>
@@ -110,7 +109,7 @@
                   </ul>
                 </div><!-- /btn-group -->
             </div>
-        </form>
+        </div>
     </div>
 </body>
 </html>

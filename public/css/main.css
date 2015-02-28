@@ -1,19 +1,8 @@
 body {
-    padding-bottom: 50px;
+    padding-bottom: 220px;
 }
 #main {
     position: relative;
-}
-#pop-up {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    margin-bottom: 0;
-    width: 100%;
-    border-bottom: none;
-    border-radius: 4px 4px 0 0;
-    background: #fff;
 }
 .hover {
     outline: 2px solid #66f !important;
@@ -24,7 +13,7 @@ body {
     outline: 9999px solid rgba(0,0,0,0.3) !important;
 }
 .allSettings {
-    position: absolute;
+    position: fixed;
     right: 0;
     z-index: 100;
     outline: none !important;
@@ -32,10 +21,26 @@ body {
     border-top: none;
     border-radius: 0 0 0 4px;
 }
+#allSettings {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
 #allSettings .well {
-    border-top: none;
-    border-radius: 0 0 5px 5px;
+    margin: 0;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    height: 200px;
+    overflow: auto;
 }
 #allSettings input {
     margin-bottom: 10px;
+}
+#info {
+    position: fixed;
+    left: 5px;
+    top: 5px;
+    max-width: 300px;
 }

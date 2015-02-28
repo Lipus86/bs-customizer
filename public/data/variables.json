@@ -1,32 +1,32 @@
-[
-    {
+{
+    "grayLase": {
         "name":"gray-base",
         "alias":"grayLase",
         "value":"#000",
         "description":"Text color"
     },
-    {
+    "grayDarker": {
         "name":"gray-darker",
         "alias":"grayDarker",
         "value":"lighten($gray-base, 13.5%)",
         "description":"gray-darker color"
     },
-    {
+    "grayDark": {
         "name":"gray-dark",
         "alias":"grayDark",
         "value":"lighten($gray-base, 20%)",
         "description":"gray-dark color"
     },
-    {
+    "gray": {
         "name":"gray",
         "alias":"gray",
         "value":"lighten($gray-base, 33.5%)",
         "description":"gray color"
     },
-    {
+    "bodyBg": {
         "name":"body-bg",
         "alias":"bodyBg",
         "value":"#fff",
         "description":"Body BG"
     }
-]
+}
