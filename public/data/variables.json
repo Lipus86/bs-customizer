@@ -28,5 +28,101 @@
         "alias":"bodyBg",
         "value":"#fff",
         "description":"Body BG"
+    },
+    "textColor": {
+        "name":"text-color",
+        "alias":"textColor",
+        "value":"$gray-dark",
+        "description":"Text color"
+    },
+    "linkColor": {
+        "name":"link-color",
+        "alias":"linkColor",
+        "value":"$brand-primary",
+        "description":"Link color"
+    },
+    "linkHoverColor": {
+        "name":"link-hover-color",
+        "alias":"linkHoverColor",
+        "value":"darken($link-color, 15%)",
+        "description":"Link hover color"
+    },
+    "fontFamilyBase": {
+        "name":"font-family-base",
+        "alias":"fontFamilyBase",
+        "value":"'Helvetica Neue', Helvetica, Arial, sans-serif",
+        "description":"Base font family"
+    },
+    "fontSizeBase": {
+        "name":"font-size-base",
+        "alias":"fontSizeBase",
+        "value":"14px",
+        "description":"Base font size"
+    },
+    "fontSizeH1": {
+        "name":"font-size-h1",
+        "alias":"fontSizeH1",
+        "value":"floor(($font-size-base * 2.6))",
+        "description":"H1 font size"
+    },
+    "fontSizeH2": {
+        "name":"font-size-h2",
+        "alias":"fontSizeH2",
+        "value":"floor(($font-size-base * 2.1))",
+        "description":"H2 font size"
+    },
+    "fontSizeH3": {
+        "name":"font-size-h3",
+        "alias":"fontSizeH3",
+        "value":"floor(($font-size-base * 1.7))",
+        "description":"H3 font size"
+    },
+    "fontSizeH4": {
+        "name":"font-size-h4",
+        "alias":"fontSizeH4",
+        "value":"floor(($font-size-base * 1.25))",
+        "description":"H4 font size"
+    },
+    "fontSizeH5": {
+        "name":"font-size-h5",
+        "alias":"fontSizeH5",
+        "value":"$font-size-base",
+        "description":"H5 font size"
+    },
+    "fontSizeH6": {
+        "name":"font-size-h6",
+        "alias":"fontSizeH6",
+        "value":"floor(($font-size-base * 0.85))",
+        "description":"H6 font size"
+    },
+    "lineHeightBase": {
+        "name":"line-height-base",
+        "alias":"lineHeightBase",
+        "value":"1.428571429",
+        "description":"Base line height"
+    },
+    "headingsFontFamily": {
+        "name":"headings-font-family",
+        "alias":"headingsFontFamily",
+        "value":"inherit",
+        "description":"Headings font family"
+    },
+    "headingsFontWeight": {
+        "name":"headings-font-weight",
+        "alias":"headingsFontWeight",
+        "value":"500",
+        "description":"Headings font weight"
+    },
+    "headingsLineHeight": {
+        "name":"headings-line-height",
+        "alias":"headingsLineHeight",
+        "value":"1.1",
+        "description":"Headings line-height"
+    },
+    "headingsColor": {
+        "name":"headings-color",
+        "alias":"headingsColor",
+        "value":"inherit",
+        "description":"Headings color"
     }
 }

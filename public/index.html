@@ -13,7 +13,11 @@
 
 
 <body ng-app="bsCustomizer">
-    <button class="btn btn-primary btn-lg allSettings" type="button" data-toggle="collapse" data-target="#allSettings" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-cog"></span></button>
+    <div class="btn-group top-btns">
+        <a href="bootstrap.css" class="btn btn-success btn-sm allSettings" type="button" data-toggle="collapse" data-target="#allSettings" aria-expanded="false" aria-controls="collapseExample" href=""><span class="glyphicon glyphicon-download-alt"></span> CSS</a>
+        <a href="#" class="btn btn-warning btn-sm allSettings" type="button" data-toggle="collapse" data-target="#allSettings" aria-expanded="false" aria-controls="collapseExample" href=""><span class="glyphicon glyphicon-download-alt"></span> SASS</a>
+        <button class="btn btn-primary btn-lg allSettings" type="button" data-toggle="collapse" data-target="#allSettings" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-cog"></span></button>
+    </div>    
     <form method="POST" id="generalForm">
         <div class="row">
             <div class="collapse" id="allSettings">

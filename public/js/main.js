@@ -26,27 +26,30 @@ $(function() {
     };
     $('#main').find(activeElements).on({
         click: function(e){
-            var currentElement = $(this);
-            showInputs(currentElement);
+            showInputs($(this));
             e.stopPropagation();
             e.preventDefault();
         },
         mouseover : function(e) {
-            $(activeElements).removeClass('hover');
-            $(this).addClass('hover');
-            e.stopPropagation();
+            if ($('#main').hasClass('activated')){
+                $(activeElements).removeClass('hover');
+                $(this).addClass('hover');
+                e.stopPropagation();
+            };
         },
         mouseleave: function(e) {
-            $(this).removeClass('hover');
-            e.stopPropagation();
+            if ($('#main').hasClass('activated')){
+                $(this).removeClass('hover');
+                e.stopPropagation();
+            };
         }
     });
-    $('#main').on('click', function(e){
+    $('#main').on('click', function(){
         showInputs('all');
     });
-    $(activeElements)
-    $(document).on('keyup', function(e) {
-      if (e.keyCode == 27) hidePopup();
+    $('.allSettings').on('click', function(){
+        $('#main').toggleClass('activated');
+        showInputs('all');
     });
 
     function sendForm(e){
@@ -79,26 +82,24 @@ $(function() {
         if ($('#info')) $('#info').remove();
     };
     function showInputs(currentElement){
-        if (currentElement === 'all') {
-            $('.input-holder').show();
-            if (prevElement) prevElement.removeClass('active-element');
-        } else {
-            hideInputs();
-            var properties = currentElement.data('properties');
-            for (prop in properties) {
-                $('.input-holder').each(function(){
-                    if ($(this).attr('id') == properties[prop]) {
-                        $(this).show();
-                    }
-                });
-            }
-            currentElement.addClass('active-element');
-            prevElement = currentElement;
-        }
-    };
-    function hideInputs(){
-        $('.input-holder').hide();
         if (prevElement) prevElement.removeClass('active-element');
+        if ($('#main').hasClass('activated')){
+            if (currentElement === 'all') {
+                $('.input-holder').show();
+            } else {
+                $('.input-holder').hide();
+                var properties = currentElement.data('properties');
+                for (prop in properties) {
+                    $('.input-holder').each(function(){
+                        if ($(this).attr('id') == properties[prop]) {
+                            $(this).show();
+                        }
+                    });
+                }
+                currentElement.addClass('active-element');
+                prevElement = currentElement;
+            };
+        };
     };
     $.fn.serializeObject = function(){
         var o = {};

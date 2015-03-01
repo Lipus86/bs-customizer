@@ -1,7 +1,11 @@
 {
-   "h1": ["bodyBg", "fx", "gh", "lf"],
-   "h2": ["gh", "lf"],
-   "h3": [ "gh", "lf"],
-   "a": [ "gh", "lf"],
-   "button": [ "gh", "lf"]
+    "h1": ["headingsColor", "fontSizeH1", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
+    "h2": ["headingsColor", "fontSizeH2", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
+    "h3": ["headingsColor", "fontSizeH3", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
+    "h4": ["headingsColor", "fontSizeH4", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
+    "h5": ["headingsColor", "fontSizeH5", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
+    "h6": ["headingsColor", "fontSizeH6", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
+    "p": ["textColor","fontSizeBase", "lineHeightBase"],
+    "a": ["linkColor", "linkHoverColor"],
+    "button": ["", ""]
 }
