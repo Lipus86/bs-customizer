@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
     fs = require('fs'),
+    copyFile = require('fast-copy-file'),
     variables = require('./public/data/variables');
 
 app.use(express.static(__dirname + '/public'));
@@ -18,12 +19,16 @@ app.post('/', function(req, res) {
     var property,
         sassConf = '@import "bootstrap/variables";\n';
     for (var key in req.body ) {
-        property = '$' + variables[key].name + ':' + req.body[key] + ';\n';
+        property = "$" + key + ':' + req.body[key] + ';\n';
         sassConf = sassConf + property;
     };
     fs.writeFile('styles/_bootstrap-variables.sass', sassConf, function (err) {
       if (err) throw err;
-      console.log('_bootstrap-variables.sass is saved!');
+        console.log('_bootstrap-variables.sass is saved!');
+        copyFile('styles/_bootstrap-variables.sass', 'public/users_data/_bootstrap-variables.sass', function (err) {
+            if (err) console.log("Can't copy _bootstrap-variables.sass");
+            console.log("_bootstrap-variables.sass copied");
+        });
         var sass = require('node-sass');
         sass.render({
             file: 'styles/bootstrap.scss',

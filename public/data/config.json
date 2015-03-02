@@ -1,11 +1,17 @@
 {
-    "h1": ["headingsColor", "fontSizeH1", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
-    "h2": ["headingsColor", "fontSizeH2", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
-    "h3": ["headingsColor", "fontSizeH3", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
-    "h4": ["headingsColor", "fontSizeH4", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
-    "h5": ["headingsColor", "fontSizeH5", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
-    "h6": ["headingsColor", "fontSizeH6", "headingsFontFamily", "headingsLineHeight", "headingsColor"],
-    "p": ["textColor","fontSizeBase", "lineHeightBase"],
-    "a": ["linkColor", "linkHoverColor"],
-    "button": ["", ""]
+    "h1": ["headings-color", "font-size-h1", "headings-font-family", "headings-line-height"],
+    "h2": ["headings-color", "font-size-h2", "headings-font-family", "headings-line-height"],
+    "h3": ["headings-color", "font-size-h3", "headings-font-family", "headings-line-height"],
+    "h4": ["headings-color", "font-size-h4", "headings-font-family", "headings-line-height"],
+    "h5": ["headings-color", "font-size-h5", "headings-font-family", "headings-line-height"],
+    "h6": ["headings-color", "font-size-h6", "headings-font-family", "headings-line-height"],
+    "p": ["text-color","font-size-base", "line-height-base"],
+    "a": ["link-color", "link-hover-color"],
+    "blockquote": ["blockquote-font-size", "blockquote-border-color"],
+    ".btn-default": ["btn-font-weight", "btn-default-color", "btn-default-bg", "btn-default-border"],
+    ".btn-primary": ["btn-font-weight", "btn-primary-color", "btn-primary-bg", "btn-primary-border"],
+    ".btn-success": ["btn-font-weight", "btn-success-color", "btn-success-bg", "btn-success-border"],
+    ".btn-info": ["btn-font-weight", "btn-info-color", "btn-info-bg", "btn-info-border"],
+    ".btn-warning": ["btn-font-weight", "btn-warning-color", "btn-warning-bg", "btn-warning-border"],
+    ".btn-danger": ["btn-font-weight", "btn-danger-color", "btn-danger-bg", "btn-danger-border"]
 }
